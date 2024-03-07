@@ -10,6 +10,7 @@
 #include<fstream>
 #include <vector>
 #include <sstream>
+#include<string>
 
 
 using namespace std;
@@ -51,59 +52,47 @@ int main()
         }
         else if(option==2)
         {
-          double PTS=0;
-          cout<<"Please enter PTS values for comparison(equal or higher)"<<"\n";
-          cin>>PTS;
+            int PTS=0;
+            cout<<"Please enter PTS values to get payers with equal or higher than the one you enter"<<endl;
+            cin>>PTS;
+
+          fstream file;
+          file.open("..\\NBA_2024_stats.csv",ios::in);
+          string line,check,line2,thrower;
+          vector<string> row;
+          file>>thrower;
+          while(!file.eof())
+          {
+             file>>line;
+               stringstream transport(line);
+               row.clear();
+               while(!transport.fail())
+               {
+                   getline(transport,line2,',');
+                   row.push_back(line2);
+               }
 
 
-           vector<string> record ;
-            string line2,temp;
-            int checker=0;
-            string values [12];
-            fstream file("..\\NBA_2024_stats.csv",ios::in );
-            while(!file.eof())
-            {
+                  if (stoi(row[5]) >= PTS )
+                  {
 
-                file>>line2;
+                     for(int i=0;i<row.size();i++)
+                     {
 
-                record.push_back(line2);
+                         cout<<row[i]<<" ";
+                     }
+                     cout<<endl;
 
-            }
-            for(int i=0;i<record.size();i++)
-            {
-                   stringstream s;
-                   s>>record[i];
+                  }
+                  else
+                  {
 
-                   while (!s.eof())
-                   {
-                    getline(record[i], temp, ',');
-                    values[checker] = temp;
+                  }
 
-
-
-                    checker++;
-
-                   }
-                stringstream ss;
-                double pts = 0;
-                ss >> values[5];
-                //cout<<"stop";
-                ss << pts;
-                cout<<pts;
-                if (pts >= PTS)
-                {
-                    for (int i = 0; i < (sizeof(values) / sizeof(values[0])); i++)
-                    {
-                        cout << values[i] << " , ";
-                    }
-                }
-
-                else
-                {
-                    cout<<"no record found with bigger PTS"<<endl;
-                }
-              }
+          }
+          file.close();
         }
+
         else if(option==3)
         {
 
