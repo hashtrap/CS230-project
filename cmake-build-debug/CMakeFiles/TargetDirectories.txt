@@ -1,0 +1,3 @@
+C:/Users/letme/OneDrive/Desktop/CS230-project/cmake-build-debug/CMakeFiles/c___project.dir
+C:/Users/letme/OneDrive/Desktop/CS230-project/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/letme/OneDrive/Desktop/CS230-project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
