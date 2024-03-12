@@ -28,7 +28,7 @@ int main()
         cout << "3) Enter data for an additional player" << endl;
         cout << "4) Sort the player records and save them into a new file" << endl;
         cout << "5) Display the sorted data" << endl;
-        cout << "7) Calculate a new performance metric (NEW), display sorted data" << endl;
+        cout << "6) Calculate a new performance metric (NEW), display sorted data" << endl;
         cout << "7) Exit the program" << endl;
         cin>> option;
         if(option==1)
