@@ -11,6 +11,7 @@
 #include <vector>
 #include <sstream>
 #include<string>
+#include "Player.h"
 
 
 using namespace std;
