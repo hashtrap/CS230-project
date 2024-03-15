@@ -8,51 +8,55 @@
 #endif //C___PROJECT_PLAYER_H
 #include <iostream>
 #include<string>
+#include<sstream>
+#include <algorithm>
+
 
 using namespace std;
-class player
+class Player
 {
-        public:
-            int id;
-            string name;
-            string team;
-            int GP;
-            double MIN;
-            double PTS;
-            double FG_PERC;
-            double THREE_P_PERC;
-            double FT_PERC;
-            double REB;
-            double AST;
-            double STL;
-            double BLK;
+  public:
+    int id;
+    string name;
+    string team;
+    int GP;
+    double MIN;
+    double PTS;
+    double FG_PERC;
+    double THREE_P_PERC;
+    double FT_PERC;
+    double REB;
+    double AST;
+    double STL;
+    double BLK;
+    ifstream file_csv;
+    ofstream file_txt;
 
-             player(int id1,string name1,string team1,int GP1,double MIN1,double PTS1,
-                    double FG_PERC1,double THREE_P_PERC1,double FT_PERC1,double REB1,double AST1,double STL1,double BLK1 )
-                   {
-                       id=id1;
-                       name=name1;
-                       team=team1;
-                       GP=GP1;
-                       MIN=MIN1;
-                       PTS=PTS1;
-                       FG_PERC=FG_PERC1;
-                       THREE_P_PERC=THREE_P_PERC1;
-                       FT_PERC=FT_PERC1;
-                       REB=REB1;
-                       AST=AST1;
-                       STL=STL1;
-                       BLK=BLK1;
+    Player()
+    {
+       file_csv.open("..\\test.txt");
+
+        string a,b,c,temp,d,f,g;
+        file_csv>>temp;
+        replace(temp.begin(), temp.end(), ',', ' ');
+        cout<<temp<<endl;
+        stringstream s(temp);
+        s>>d>>f>>g;
+        cout<<d<<f<<g<<endl;
+        file_csv.close();
 
 
-                   }
+    }
+
+
+
 
     int getId() const {
         return id;
     }
 
     void setId(int id) {
-        player::id = id;
+        Player::id = id;
     }
 
     const string &getName() const {
@@ -60,7 +64,7 @@ class player
     }
 
     void setName(const string &name) {
-        player::name = name;
+        Player::name = name;
     }
 
     const string &getTeam() const {
@@ -68,7 +72,7 @@ class player
     }
 
     void setTeam(const string &team) {
-        player::team = team;
+        Player::team = team;
     }
 
     int getGp() const {
@@ -149,6 +153,51 @@ class player
 
     void setBlk(double blk) {
         BLK = blk;
+    }
+
+
+    void New_data(vector<string> target) {
+        file_txt.open("NBA_2024_stats.txt",ios::app);
+        file_csv.open("..\\NBA_2024_stats.csv");
+        if(!file_txt)
+        {
+
+        string fetch = "";
+        cout<<"hello";
+
+           while (!file_csv.eof())
+           {
+
+               getline(file_csv,fetch);
+               file_txt << fetch<<endl;
+               fetch = "";
+           }
+
+        file_csv.close();
+        }
+
+            for (int i = 0; i <target.size(); i++)
+            {
+                if(i!=target.size()-1)
+                {
+                file_txt << target[i]<<",";
+                }
+                else
+                {
+                    file_txt << target[i];
+                }
+            }
+            file_txt<<endl;
+
+            file_txt.close();
+
+    }
+
+    string toString()
+    {
+        string result="hi";
+
+        return result;
     }
 
 

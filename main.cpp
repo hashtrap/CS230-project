@@ -18,7 +18,10 @@ using namespace std;
 int main()
 {
 
+
     int option(7);
+
+
     while (true)
     {
         cout << "=========================================================================" << endl;
@@ -96,11 +99,39 @@ int main()
 
         else if(option==3)
         {
+            vector<string>rookie;
+            string info,insert,answer;
+            Player new_player;
+
+                cout << "Please enter players info(use space to seperate)"<<endl;
+                fflush(stdin);
+                getline(cin,info);
+                cout<<info<<endl;
+                stringstream changer(info);
+                fflush(stdin);
+                while(getline(changer,insert,' '))
+                {
+                    rookie.push_back(insert);
+                }
+
+                new_player.New_data(rookie);
+
+
+
 
         }
         else if(option==4)
         {
+            string name,smth;
+            fflush(stdin);
+            getline(cin, name);
 
+            stringstream s(name);
+            fflush(stdin);
+            while(getline(s,smth,' '))
+            {
+                cout<<smth<<endl;
+            }
         }
         else if(option==5)
         {
