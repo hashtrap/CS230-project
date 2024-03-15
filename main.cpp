@@ -122,16 +122,10 @@ int main()
         }
         else if(option==4)
         {
-            string name,smth;
-            fflush(stdin);
-            getline(cin, name);
+            string sort_val="";
+            cout<<"Please enter the value by which you will be sorting";
+            cin>>sort_val;
 
-            stringstream s(name);
-            fflush(stdin);
-            while(getline(s,smth,' '))
-            {
-                cout<<smth<<endl;
-            }
         }
         else if(option==5)
         {
