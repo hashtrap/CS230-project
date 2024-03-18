@@ -20,7 +20,7 @@ Sort::Sort()
         pl.Upload();
         toSort.push_back(pl);
     }
-    std::cout<<toSort.size()<<std::endl;
+
 }
 void Sort:: Print()
 {
@@ -44,9 +44,6 @@ void Sort::BubbleSort()
 
                 for(int j=0;j<toSort.size()-i-1;j++)
                 {
-
-
-
                     if(toSort[j].getId()>toSort[j+1].getId())
                     {
 
@@ -54,6 +51,7 @@ void Sort::BubbleSort()
                     }
                 }
             }
+            std::cout<<toSort.size();
             break;
         case 2:
             for(int i=0;i<toSort.size()-1;i++)

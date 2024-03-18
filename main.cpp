@@ -132,11 +132,10 @@ int option(7);
         {
             Sort sort;
             sort.BubbleSort();
-            for(int i=0;i<sort.getToSort().size();i++)
-            {
+
 
                 sort.Print();
-            }
+
 
 
         }
