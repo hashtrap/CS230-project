@@ -5,4 +5,8 @@ set(CMAKE_CXX_STANDARD 23)
 
 add_executable(c___project main.cpp
         Player.h
-        Sorting_class.h)
+        Player.cpp
+        Sort.h
+        Sort.cpp
+        Sort.h
+)

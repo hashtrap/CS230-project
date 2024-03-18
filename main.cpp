@@ -14,12 +14,36 @@
 #include "Player.h"
 
 
+
+
 using namespace std;
+//
+// Created by letme on 13/03/2024.
+//
+
+#ifndef C___PROJECT_PLAYER_H
+#define C___PROJECT_PLAYER_H
+
+#endif //C___PROJECT_PLAYER_H
+#include <iostream>
+#include<string>
+#include<sstream>
+#include <algorithm>
+#include<list>
+#include "Player.h"
+#include"Sort.h"
+
+
+using namespace std;
+
 int main()
 {
 
 
-    int option(7);
+
+
+int option(7);
+
 
 
     while (true)
@@ -37,21 +61,6 @@ int main()
         cin>> option;
         if(option==1)
         {
-            string line;
-            fstream file("..\\NBA_2024_stats.csv",ios::in );
-               while(file.eof()!=1)
-                {
-
-                    file>>line;
-
-                    cout << line <<endl;
-                    cout<<endl;
-
-
-                }
-               file.close();
-
-
 
         }
         else if(option==2)
@@ -106,7 +115,6 @@ int main()
                 cout << "Please enter players info(use space to seperate)"<<endl;
                 fflush(stdin);
                 getline(cin,info);
-                cout<<info<<endl;
                 stringstream changer(info);
                 fflush(stdin);
                 while(getline(changer,insert,' '))
@@ -114,7 +122,7 @@ int main()
                     rookie.push_back(insert);
                 }
 
-                new_player.New_data(rookie);
+                new_player.NewData(rookie);
 
 
 
@@ -122,9 +130,14 @@ int main()
         }
         else if(option==4)
         {
-            string sort_val="";
-            cout<<"Please enter the value by which you will be sorting";
-            cin>>sort_val;
+            Sort sort;
+            sort.BubbleSort();
+            for(int i=0;i<sort.getToSort().size();i++)
+            {
+
+                sort.Print();
+            }
+
 
         }
         else if(option==5)
