@@ -38,7 +38,7 @@ void Player::Upload()
            s<<line;
            s>>Player::id>>Player::name>> Player::team>> Player::GP >> Player::MIN>> Player::PTS >> Player::FG_PERC>> Player::THREE_P_PERC>>Player::FT_PERC>>Player::REB >> Player::AST>> Player::STL >> Player::BLK;
 
-           std::cout<<current_line<<std::endl;
+
            break;
        }
        else

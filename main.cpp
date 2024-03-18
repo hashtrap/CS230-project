@@ -131,10 +131,19 @@ int option(7);
         else if(option==4)
         {
             Sort sort;
-            sort.BubbleSort();
-
-
+            bool asc;
+            cout<<"Do you want to go ascending or descending?[1/0]"<<endl;
+            cin>>asc;
+            if(asc)
+            {
+                sort.BubbleSort(true);
                 sort.Print();
+            }
+            else
+            {
+                sort.BubbleSort(false);
+                sort.Print();
+            }
 
 
 

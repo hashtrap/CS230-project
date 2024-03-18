@@ -18,7 +18,7 @@ public :
 
      Sort(bool from_file);
 
-void BubbleSort();
+void BubbleSort(bool asc);
 
 void InsertionSort();
 
