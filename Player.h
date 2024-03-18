@@ -27,6 +27,7 @@ public:
     double AST;
     double STL;
     double BLK;
+    double NEW;
 
 public:
     Player();
@@ -34,9 +35,11 @@ public:
     ~Player();
 
 
+    void FinalMethod();
 
+    void CreateFile();
 
-    void ShowData();
+    void ShowData(bool original);
 
     void Upload();
 
@@ -97,6 +100,7 @@ public:
     void setBlk(double blk);
 
 
+    void setNew();
 };
 
 

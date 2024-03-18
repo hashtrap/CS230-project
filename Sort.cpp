@@ -12,7 +12,7 @@
 
 Sort::Sort()
 {
-    for(int i=0;i<13;i++)
+    for(int i=0;i<12;i++)
     {
 
         Player pl;
@@ -21,17 +21,19 @@ Sort::Sort()
     }
 
 }
-void Sort:: Print()
+void Sort:: create_file()
 {
     for(int i=0;i<toSort.size();i++)
     {
         std::cout<<toSort[i].Print()<<std::endl;
+        toSort[i].CreateFile();
     }
+
 }
 void Sort::BubbleSort(bool asc)
 {
     Player obj;
-    obj.ShowData();
+    obj.ShowData(true);
     int option;
     std::cout<<"Please choose which option to sort(1-13)"<<std::endl;
     std::cin>>option;
@@ -177,7 +179,7 @@ void Sort::BubbleSort(bool asc)
                        }
                    }
                }
-               std::cout << toSort.size();
+
                break;
            case 2:
                for (int i = 0; i < toSort.size() - 1; i++) {

@@ -61,7 +61,8 @@ int option(7);
         cin>> option;
         if(option==1)
         {
-
+          Player play;
+          play.ShowData(true);
         }
         else if(option==2)
         {
@@ -137,12 +138,12 @@ int option(7);
             if(asc)
             {
                 sort.BubbleSort(true);
-                sort.Print();
+                sort.create_file();
             }
             else
             {
                 sort.BubbleSort(false);
-                sort.Print();
+                sort.create_file();
             }
 
 
@@ -150,11 +151,17 @@ int option(7);
         }
         else if(option==5)
         {
+            ifstream file;
+            file.open( "NBA_sorted_stats.txt");
+            Player play;
+            play.ShowData(false);
 
         }
         else if(option==6)
         {
 
+            Player play;
+            play.FinalMethod();
         }
         else if(option==7)
         {

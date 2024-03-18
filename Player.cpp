@@ -38,6 +38,7 @@ void Player::Upload()
            s<<line;
            s>>Player::id>>Player::name>> Player::team>> Player::GP >> Player::MIN>> Player::PTS >> Player::FG_PERC>> Player::THREE_P_PERC>>Player::FT_PERC>>Player::REB >> Player::AST>> Player::STL >> Player::BLK;
 
+           Player::setNew();
 
            break;
        }
@@ -151,18 +152,36 @@ void Player::setBlk(double blk) {
     BLK = blk;
 }
 
-void Player::ShowData()
+void Player::setNew()
 {
-    std::ifstream file("..\\NBA_2024_stats.csv");
-    std::string show;
+    Player::NEW=Player::PTS*Player::REB*Player::AST*0.001;
+    Player::NEW=(Player::NEW * 10) / 10.0;
+}
 
-    while(!file.eof())
+void Player::ShowData( bool original)
+{
+    if(original)
     {
-        file>>show;
-        std::cout<<show<<std::endl<<std::endl;
-    }
+        std::ifstream file("..\\NBA_2024_stats.csv");
+        std::string show;
 
-    file.close();
+        while (!file.eof()) {
+            file >> show;
+            std::cout << show << std::endl << std::endl;
+        }
+        file.close();
+    }
+    else
+    {
+        std::ifstream file(" NBA_sorted_stats.txt");
+        std::string show;
+
+        while (!file.eof()) {
+            std::getline(file,show);
+            std::cout << show << std::endl ;
+        }
+        file.close();
+    }
 }
 
 
@@ -176,28 +195,30 @@ void Player::NewData(std::vector<std::string> target) {
     do {
 
         std::string fetch = "";
-        std::cout << "hello";
+
 
         while (!file_4out.eof()) {
 
             getline(file_4out, fetch);
             replace(fetch.begin(), fetch.end(), ',', ' ');
-            file_4in << fetch << std::endl;
-            fetch = "";
+            file_4in << fetch<<std::endl;
+
         }
 
         file_4out.close();
     } while (file_4in.fail());
 
-    /*for (int i = 0; i < target.size(); i++) {
-        if (i != target.size() - 1) {
-            file_4in << target[i] << " ";
-        } else {
-            file_4in << target[i];
+    if(!target.empty())
+    {
+        for (int i = 0; i < target.size(); i++) {
+            if (i != target.size() - 1) {
+                file_4in << target[i] << " ";
+            } else {
+                file_4in << target[i];
+            }
         }
-    }*/
-    //file_4in << std::endl;
-
+        file_4in << std::endl;
+    }
     file_4in.close();
     file_4out.close();
 }
@@ -211,3 +232,37 @@ std::string Player::Print() {
     return result;
 }
 
+void Player::CreateFile()
+{
+    std::ofstream file(" NBA_sorted_stats.txt",std::ios::app);
+
+        file<<Player::getId()<<" "<<Player::getName()<<" "<<Player::getTeam()<<" "
+            <<Player::getGp()<<" "<<Player::getMin()<<" "<<Player::getPts()<<" "<<Player::getFgPerc()<<" "<<Player::getThreePPerc()<<" "
+            <<Player::getFtPerc()<<" "<<Player::getReb()<<" "<<Player::getAst()<<" "<<Player::getStl()<<" "<<Player::getBlk()<<std::endl;
+       file.close();
+}
+
+void Player::FinalMethod()
+{
+    std::ifstream file_4out;
+    std::ofstream file_4in;
+    file_4out.open("NBA_2024_stats.txt",std::ios::in);
+    file_4in.open("NBA_processed_stats.txt");
+    std::string fetch = "";
+
+    getline(file_4out, fetch);
+    file_4in<<fetch<<" NEW"<<std::endl;
+
+    for(int i=0;i<12;i++)
+    {
+        Player final;
+        final.Upload();
+        file_4in<<final.getId()<<" "<<final.getName()<<" "<<final.getTeam()
+                <<" "<<final.getGp()<<" "<<final.getMin()<<" "<<final.getPts()<<" "
+                <<final.getFgPerc()<<" "<<final.getThreePPerc()<<" "<<final.getFtPerc()<<" "
+                <<final.getReb()<<" "<<final.getAst()<<" "<<final.getStl()<<" "
+                <<final.getBlk()<<" "<<final.NEW<<std::endl;
+    }
+
+
+}

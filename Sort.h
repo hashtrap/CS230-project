@@ -28,7 +28,7 @@ void MergeSort();
 
     void setToSort(const std::vector<Player> &toSort);
 
-    void Print();
+    void create_file();
 };
 
 
