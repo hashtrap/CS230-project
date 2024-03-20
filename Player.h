@@ -1,5 +1,6 @@
 //
-// Created by letme on 3/17/2024.
+// Created by Stavri Gkousi on 3/17/2024.
+//full rights reseerved
 //
 
 #ifndef C___PROJECT_PLAYER_H
@@ -8,11 +9,11 @@
 #include<iostream>
 #include<string>
 #include <fstream>
-#include<vector>
+#include<vector> // neccessary libraries for the Player class
 
-class Player {
-
-public:
+class Player { //creates the Player class
+// i could have put using namespace but i didnt because i enjoyed it more like this
+public: //create the neccessary object fields
      int id;
     static  int file_line;
     std::string name;
@@ -30,12 +31,12 @@ public:
     double NEW;
 
 public:
-    Player();
+    Player(); //declare constructor
 
-    ~Player();
+    ~Player(); //declare deconstructor
 
 
-    void FinalMethod();
+    void FinalMethod(); // all neccessary methods needed by the object
 
     void CreateFile();
 
@@ -47,7 +48,7 @@ public:
 
     std::string Print();
 
-    int getId() const;
+    int getId() const; //below are the getter and setter methods
 
     void setId(int id);
 

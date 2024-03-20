@@ -11,7 +11,7 @@
 #include<fstream>
 
 
-int Player:: file_line=1;
+int Player:: file_line=1; //declare a static field
 std::ifstream file_out;
 Player::Player() {
 
@@ -22,9 +22,13 @@ Player::~Player()
 
 }
 
-void Player::Upload()
+void Player::Upload() // the method used to input the NBA_2024_stats.txt file data into the object
 {
-   std::fstream file("NBA_2024_stats.txt",std::ios::in);
+    Player pl;
+    std::vector<std::string> se;
+    pl.NewData(se);
+
+    std::fstream file("NBA_2024_stats.txt",std::ios::in);
    std::stringstream s;
    std::string line;
     ++file_line;
@@ -48,7 +52,7 @@ void Player::Upload()
 
 }
 
-int Player::getId() const {
+int Player::getId() const { //below we have getter and setter methods
     return id;
 }
 
@@ -158,7 +162,7 @@ void Player::setNew()
     Player::NEW=(Player::NEW * 10) / 10.0;
 }
 
-void Player::ShowData( bool original)
+void Player::ShowData( bool original) // method to show the csv and sorted txt file depending on the boolean value
 {
     if(original)
     {
@@ -186,7 +190,8 @@ void Player::ShowData( bool original)
 
 
 
-void Player::NewData(std::vector<std::string> target) {
+void Player::NewData(std::vector<std::string> target)  // the method used to create the NBA_2024_stats.txt file
+{
     std::ifstream file_4out;
     std::ofstream file_4in;
     file_4out.open("..\\NBA_2024_stats.csv",std::ios::in);
@@ -223,7 +228,8 @@ void Player::NewData(std::vector<std::string> target) {
     file_4out.close();
 }
 
-std::string Player::Print() {
+std::string Player::Print()  //method used to give the objects fields in a string form
+{
     std::string result = "";
 
     result =std::to_string(Player::id) + " " +Player::name + " " + Player::team + " " + std::to_string(GP) + " " + std::to_string(MIN)
@@ -232,7 +238,7 @@ std::string Player::Print() {
     return result;
 }
 
-void Player::CreateFile()
+void Player::CreateFile() //the method used to create the NBA_sorted_stats.txt file
 {
     std::ofstream file(" NBA_sorted_stats.txt",std::ios::app);
 
@@ -242,7 +248,7 @@ void Player::CreateFile()
        file.close();
 }
 
-void Player::FinalMethod()
+void Player::FinalMethod() // teh final method to put the NEW column in the file
 {
     std::ifstream file_4out;
     std::ofstream file_4in;

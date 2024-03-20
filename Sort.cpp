@@ -10,7 +10,7 @@
 #include<cstring>
 #include<sstream>
 
-Sort::Sort()
+Sort::Sort() // the constructor created 12 Player objects and puttinfg them in the toSort vector
 {
     for(int i=0;i<12;i++)
     {
@@ -21,7 +21,7 @@ Sort::Sort()
     }
 
 }
-void Sort:: create_file()
+void Sort:: create_file() // after sorting the vector we print the values of the Player objects and putting them in the sorted file
 {
     for(int i=0;i<toSort.size();i++)
     {
@@ -30,7 +30,7 @@ void Sort:: create_file()
     }
 
 }
-void Sort::BubbleSort(bool asc)
+void Sort::BubbleSort(bool asc) // BubbleSort method used to sort the vector (if asc is true it sorts in ascending order)
 {
     Player obj;
     obj.ShowData(true);
@@ -298,7 +298,7 @@ void Sort::BubbleSort(bool asc)
    }
 }
 
-const std::vector<Player> &Sort::getToSort() const {
+const std::vector<Player> &Sort::getToSort() const { //getter setter methods for toSort vector
     return toSort;
 }
 

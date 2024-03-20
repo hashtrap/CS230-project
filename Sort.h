@@ -7,28 +7,28 @@
 
 #include<iostream>
 #include<vector>
-#include"Player.h"
-class Sort
+#include"Player.h" // import all the neccessary libraries together with my Player class
+class Sort // start Sort class
 {
 private:
-    std::vector<Player> toSort;
+    std::vector<Player> toSort; // declare private vector of Player
 
 public :
-     Sort();
+     Sort(); // default constructor
 
-     Sort(bool from_file);
+     Sort(bool from_file); // polymorphism in the constructor
 
-void BubbleSort(bool asc);
+void BubbleSort(bool asc); // bubble sort method
 
-void InsertionSort();
+void InsertionSort(); // unused methods because of time issues
 
-void MergeSort();
+void MergeSort(); //unused methods because of time issues
 
-    const std::vector<Player> &getToSort() const;
+    const std::vector<Player> &getToSort() const; //getter and setter methods
 
     void setToSort(const std::vector<Player> &toSort);
 
-    void create_file();
+    void create_file(); // method to create sorted list file
 };
 
 
